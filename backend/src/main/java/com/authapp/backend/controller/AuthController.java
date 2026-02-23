@@ -70,6 +70,7 @@ public class AuthController {
                 .email(request.email().toLowerCase())
                 .password(passwordEncoder.encode(request.password()))
                 .createdAt(LocalDateTime.now())
+            .updatedAt(LocalDateTime.now())
                 .build();
 
         userRepository.save(user);
@@ -155,6 +156,10 @@ public class AuthController {
         return ResponseEntity.ok(Map.of(
                 "name", user.getName(),
                 "email", user.getEmail(),
+            "phone", user.getPhone() == null ? "" : user.getPhone(),
+            "city", user.getCity() == null ? "" : user.getCity(),
+            "bio", user.getBio() == null ? "" : user.getBio(),
+            "avatarBase64", user.getAvatarBase64() == null ? "" : user.getAvatarBase64(),
                 "logged", true
         ));
     }

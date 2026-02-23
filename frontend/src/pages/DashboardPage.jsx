@@ -49,8 +49,17 @@ export default function DashboardPage() {
     return (
         <div className="dashboard-screen">
             <div className="dashboard-card">
-                <h1>Login realizado com sucesso ✅</h1>
-                <p>Você está autenticado no sistema.</p>
+                <div className="dashboard-top">
+                    {profile?.avatarBase64 ? (
+                        <img src={profile.avatarBase64} alt="Foto de perfil" className="avatar" />
+                    ) : (
+                        <div className="avatar avatar-placeholder">Sem foto</div>
+                    )}
+                    <div>
+                        <h1>Login realizado com sucesso ✅</h1>
+                        <p>Você está autenticado no sistema.</p>
+                    </div>
+                </div>
 
                 <div className="info-grid">
                     <div>
@@ -63,15 +72,18 @@ export default function DashboardPage() {
                     </div>
                     <div>
                         <span>Sessão expira em</span>
-                        <strong>{remaining}</strong>
+                        <strong className="session-time">{remaining}</strong>
                     </div>
                     <div>
                         <span>Status</span>
-                        <strong>Logado</strong>
+                        <strong className="badge-ok">Logado</strong>
                     </div>
                 </div>
 
-                <button onClick={handleLogout}>Sair</button>
+                <div className="action-row">
+                    <button className="btn-secondary" onClick={() => navigate("/profile")}>Editar cadastro e foto</button>
+                    <button onClick={handleLogout}>Sair</button>
+                </div>
             </div>
         </div>
     );

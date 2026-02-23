@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -36,6 +37,21 @@ public class User {
     @Column(nullable = false)
     private String password;
 
+    @Column(length = 30)
+    private String phone;
+
+    @Column(length = 120)
+    private String city;
+
+    @Column(length = 500)
+    private String bio;
+
+    @Lob
+    @Column(columnDefinition = "TEXT")
+    private String avatarBase64;
+
     @Column(nullable = false)
     private LocalDateTime createdAt;
+
+    private LocalDateTime updatedAt;
 }

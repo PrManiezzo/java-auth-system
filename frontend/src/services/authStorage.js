@@ -18,6 +18,10 @@ export function getUser() {
     return data ? JSON.parse(data) : null;
 }
 
+export function setUser(user) {
+    localStorage.setItem(USER_KEY, JSON.stringify(user));
+}
+
 export function isTokenExpired() {
     const exp = localStorage.getItem(EXP_KEY);
     if (!exp) return true;

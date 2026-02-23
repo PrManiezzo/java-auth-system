@@ -4,6 +4,7 @@ import RegisterPage from "./pages/RegisterPage";
 import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 import ResetPasswordPage from "./pages/ResetPasswordPage";
 import DashboardPage from "./pages/DashboardPage";
+import ProfilePage from "./pages/ProfilePage";
 import { getToken, isTokenExpired } from "./services/authStorage";
 
 function PrivateRoute({ children }) {
@@ -27,6 +28,14 @@ export default function App() {
                 element={
                     <PrivateRoute>
                         <DashboardPage />
+                    </PrivateRoute>
+                }
+            />
+            <Route
+                path="/profile"
+                element={
+                    <PrivateRoute>
+                        <ProfilePage />
                     </PrivateRoute>
                 }
             />
